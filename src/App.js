@@ -9,16 +9,27 @@ function App() {
     const imagesList = ["Bird", "Fish", "Cat", "Dog"];
     return imagesList[Math.floor(Math.random() * imagesList.length)];
   };
-  const handleClick = () => {
+  const randomImage = () => {
     setImages([...images, getRandomImage()]);
   };
-
+  const deleteImage = () => {
+    setImages([]);
+  };
   return (
     <div className="App">
-      <button onClick={handleClick}>Tıkla</button>
-      {images.map((image, key) => {
-        return <Image key={key} image={image}></Image>;
-      })}
+      <div>
+        <button className="buttonApp" onClick={randomImage}>
+          Tıkla
+        </button>
+        <button className="buttonApp" onClick={deleteImage}>
+          Temizle
+        </button>
+      </div>
+      <div className="imageList">
+        {images.map((image, key) => {
+          return <Image key={key} image={image}></Image>;
+        })}
+      </div>
     </div>
   );
 }
